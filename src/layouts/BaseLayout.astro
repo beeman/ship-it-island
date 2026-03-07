@@ -17,6 +17,7 @@ import Seo from "../components/seo/Seo.astro";
 import Schema from "../components/seo/Schema.astro";
 import Navbar from "../components/layout/Navbar.astro";
 import Footer from "../components/layout/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
@@ -42,6 +43,7 @@ const finalIgnoreTitleTemplate = metadata?.ignoreTitleTemplate || false;
       canonical={finalCanonical}
       ignoreTitleTemplate={finalIgnoreTitleTemplate}
     />
+    <ClientRouter />
     <Schema type="WebSite" data={{}} />
     <slot name="head" />
     <script is:inline>
