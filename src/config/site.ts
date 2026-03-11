@@ -1,26 +1,24 @@
 import ogImage from "@/assets/og-image.png";
+import type { NavLink } from "@/types/types";
+
+const defaultSiteUrl = "https://ship-it-island.beeman.dev";
+
+const navLinks: NavLink[] = [
+  { href: "/#how-it-works", text: "How It Works" },
+  { href: "/#pricing", text: "Pricing" },
+  { href: "/#faq", text: "FAQ" },
+  { href: "/apply", text: "Apply" },
+];
 
 export const siteConfig = {
-  name: "Astro Starter Pro",
+  author: "Ship It Island",
   description:
-    "Starter template optimized for SEO and performance. A solid foundation to start your projects with best practices.",
-  url: "https://astrostarterpro.com",
+    "A 14-day execution sprint for Web3 projects ready to find the blocker, fix it, and ship a real improvement in Koh Samui.",
   lang: "en",
   locale: "en_US",
-  author: "Devgelo",
-  twitter: "@Devgelo",
+  name: "Ship It Island",
+  navLinks,
   ogImage: ogImage,
-  socialLinks: {
-    twitter: "https://twitter.com",
-    github: "https://github.com/devgelo-labs/astro-starter-pro",
-    discord: "https://discord.com",
-  },
-  navLinks: [
-    { text: "Home", href: "/" },
-    { text: "About", href: "/about" },
-    { text: "Services", href: "/services" },
-    { text: "Blog", href: "/blog" },
-    { text: "Contact", href: "/contact" },
-    { text: "Widgets", href: "/widgets" },
-  ],
+  twitter: "",
+  url: import.meta.env.PUBLIC_SHIP_IT_ISLAND_SITE_URL ?? defaultSiteUrl,
 };

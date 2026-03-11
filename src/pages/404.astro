@@ -1,31 +1,39 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Hero from "@/components/widgets/Hero.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import WidgetWrapper from "@/components/widgets/WidgetWrapper.astro";
 
 const metadata = {
-  title: "404 - Page Not Found",
-  description: "The page you're looking for doesn't exist.",
+  title: "404 | Page not found",
+  description: "The page you're looking for doesn't exist on Ship It Island.",
   ignoreTitleTemplate: true,
 };
 ---
 
 <BaseLayout {metadata}>
-  <Hero
-    title={`<h1 class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent text-[12rem] font-extrabold tracking-tighter mb-4">404</h1>`}
-    description="We're sorry, we can't find the page you're looking for. It may have been moved or deleted."
-    actions={[
-      {
-        variant: "primary",
-        text: "Back to Home",
-        href: "/",
-        icon: "lucide:home",
-      },
-      {
-        variant: "secondary",
-        text: "Contact",
-        href: "/contact",
-        icon: "lucide:phone",
-      },
-    ]}
-  />
+  <WidgetWrapper containerClass="min-h-[calc(100vh-220px)] flex items-center">
+    <div class="mx-auto max-w-2xl">
+      <Card class="space-y-6 rounded-[2rem] text-center">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+        >
+          404
+        </p>
+        <h1
+          class="text-5xl font-extrabold tracking-tight text-foreground md:text-6xl"
+        >
+          Page not found
+        </h1>
+        <p class="text-lg text-muted-foreground">
+          The page you're looking for does not exist or has been retired as part
+          of the Ship It Island v1 launch.
+        </p>
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+          <Button href="/">Back to home</Button>
+          <Button href="/apply" variant="secondary"> Go to apply </Button>
+        </div>
+      </Card>
+    </div>
+  </WidgetWrapper>
 </BaseLayout>

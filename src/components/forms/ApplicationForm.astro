@@ -1,0 +1,144 @@
+---
+import Button from "@/components/ui/Button.astro";
+import { programConfig } from "@/config/program";
+
+const submitUrl = import.meta.env.PUBLIC_SHIP_IT_ISLAND_SUBMIT_URL ?? "";
+---
+
+<form
+  id="application-form"
+  class="space-y-10"
+  data-application-form
+  data-submit-url={submitUrl}
+  novalidate
+>
+  <div class="space-y-8" data-form-fields>
+    {
+      programConfig.applicationSections.map((section) => (
+        <section class="space-y-6 rounded-3xl border border-border bg-card p-6 shadow-sm md:p-8">
+          <div class="space-y-2">
+            <h2 class="text-2xl font-bold tracking-tight text-foreground">
+              {section.title}
+            </h2>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2">
+            {section.fields.map((field) => {
+              const isTextArea = field.type === "textarea";
+              const isSelect = field.type === "select";
+              const wrapperClass = isTextArea
+                ? "md:col-span-2 space-y-2"
+                : "space-y-2";
+
+              return (
+                <div class={wrapperClass}>
+                  <label
+                    class="flex items-center gap-2 text-sm font-semibold text-foreground"
+                    for={field.name}
+                  >
+                    <span>{field.label}</span>
+                    {field.required && (
+                      <span class="text-xs uppercase tracking-[0.2em] text-primary">
+                        Required
+                      </span>
+                    )}
+                  </label>
+
+                  {field.description && (
+                    <p class="text-sm text-muted-foreground">
+                      {field.description}
+                    </p>
+                  )}
+
+                  {isSelect ? (
+                    <select
+                      id={field.name}
+                      name={field.name}
+                      required={field.required}
+                      class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                    >
+                      <option value="">Select an option</option>
+                      {field.options?.map((option) => (
+                        <option value={option.value}>{option.label}</option>
+                      ))}
+                    </select>
+                  ) : isTextArea ? (
+                    <textarea
+                      id={field.name}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      required={field.required}
+                      rows={field.rows ?? 4}
+                      autocomplete={field.autocomplete}
+                      class="block min-h-32 w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                    />
+                  ) : (
+                    <input
+                      id={field.name}
+                      name={field.name}
+                      type={field.type as "email" | "text" | "url"}
+                      placeholder={field.placeholder}
+                      required={field.required}
+                      autocomplete={field.autocomplete}
+                      class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                    />
+                  )}
+
+                  <p
+                    class="hidden text-sm text-red-300"
+                    data-error-for={field.name}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <div class="space-y-4">
+    <p class="hidden" data-form-status></p>
+    <Button
+      class="w-full justify-center sm:w-auto"
+      data-idle-label="Submit application"
+      data-submit-button
+      size="lg"
+      type="submit"
+    >
+      <span data-submit-label>Submit application</span>
+    </Button>
+    <p class="text-sm text-muted-foreground">
+      Submit redirects to a confirmation page after a successful handoff to the
+      waitlist review queue.
+    </p>
+  </div>
+</form>
+
+<script>
+  import { setupSubmissionForm } from "@/scripts/submission-form";
+
+  const initApplicationForm = () => {
+    const form = document.querySelector<HTMLFormElement>(
+      "[data-application-form]",
+    );
+
+    if (!form) {
+      return;
+    }
+
+    setupSubmissionForm({
+      errorMessage:
+        "We couldn't submit your application. Your answers are still here, so please try again.",
+      formSelector: "[data-application-form]",
+      pendingLabel: "Submitting...",
+      redirectPath: "/thank-you",
+      sourcePath: "/apply",
+      submissionType: "application",
+      submitUrl: form.dataset.submitUrl ?? "",
+    });
+  };
+
+  initApplicationForm();
+  document.addEventListener("astro:page-load", initApplicationForm);
+</script>

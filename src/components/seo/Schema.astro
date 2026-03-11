@@ -16,6 +16,11 @@ interface Props {
 const { type, data } = Astro.props;
 
 let schema = {};
+const sameAs = [];
+
+if (siteConfig.twitter) {
+  sameAs.push(`https://twitter.com/${siteConfig.twitter.replace("@", "")}`);
+}
 
 if (type === "WebSite") {
   schema = {
@@ -28,7 +33,7 @@ if (type === "WebSite") {
       "@type": "Person",
       name: siteConfig.author,
     },
-    sameAs: [siteConfig.socialLinks.twitter, siteConfig.socialLinks.github],
+    ...(sameAs.length > 0 ? { sameAs } : {}),
   };
 } else if (type === "BlogPosting") {
   schema = {
@@ -59,4 +64,8 @@ if (type === "WebSite") {
 }
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>
