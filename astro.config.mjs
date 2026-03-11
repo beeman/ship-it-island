@@ -3,29 +3,14 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
-import remarkReadingTime from "remark-reading-time";
+
+const site =
+  process.env.PUBLIC_SHIP_IT_ISLAND_SITE_URL ??
+  "https://ship-it-island.beeman.dev";
 
 export default defineConfig({
-  site: "https://astrostarterpro.com/",
+  site,
   integrations: [sitemap(), icon(), mdx()],
-  markdown: {
-    remarkPlugins: [
-      remarkReadingTime,
-      () => {
-        return function (tree, file) {
-          file.data.astro.frontmatter.minutesRead =
-            file.data.readingTime.minutes;
-        };
-      },
-    ],
-  },
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "es"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: "viewport",

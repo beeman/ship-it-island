@@ -1,134 +1,585 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import Headline from "@/components/ui/Headline.astro";
+import WaitlistForm from "@/components/forms/WaitlistForm.astro";
+import WidgetWrapper from "@/components/widgets/WidgetWrapper.astro";
+import { Icon } from "astro-icon/components";
+import { programConfig } from "@/config/program";
 import { siteConfig } from "@/config/site";
-import Hero from "@/components/widgets/Hero.astro";
-import Features from "@/components/widgets/Features.astro";
-import devImg from "@/assets/images/dev_balanced.png";
-import openSourceImg from "@/assets/images/open-source.png";
-import Content2 from "@/components/widgets/Content2.astro";
+
 const metadata = {
-  title: `${siteConfig.name} — The next step for your project`,
+  title: `${siteConfig.name} | Fix the blocker and ship the improvement`,
   description:
-    "A modern and professional template for your web projects with Astro and Tailwind CSS. Boost your development with a solid foundation.",
+    "A launch-ready overview of Ship It Island: who it is for, how the sprint works, what is included, and how to apply.",
   ignoreTitleTemplate: true,
 };
 ---
 
 <BaseLayout {metadata}>
-  <Hero
-    title={`Starter Template for <br class="hidden md:block" /> <span class="bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Web Developers</span>`}
-    tagline="Astro v5 + Tailwind v4"
-    description={`${siteConfig.description}`}
-    actions={[
-      {
-        text: "Get Started",
-        href: "https://github.com/devgelo-labs/astro-starter-pro",
-        variant: "primary",
-        icon: "lucide:github",
-      },
-      {
-        text: "Our Services",
-        href: "/services",
-        variant: "secondary",
-        icon: "lucide:arrow-right",
-        ariaLabel: "Learn more about our services",
-      },
-    ]}
-  />
-  <Features
-    tagline="Features"
-    title="What's Included"
-    subtitle="A selection of tools and configurations to streamline your workflow."
-    features={[
-      {
-        title: "Optimized SEO",
-        description:
-          "Base configuration for Meta tags, Open Graph, and Sitemap generation.",
-        icon: "lucide:scan-search",
-        iconClass: "bg-blue-500/10 text-blue-400",
-      },
-      {
-        title: "High Performance",
-        description: "Lightweight structure for fast load times.",
-        icon: "lucide:zap",
-        iconClass: "bg-purple-500/10 text-purple-400",
-      },
-      {
-        title: "Tailwind v4",
-        description:
-          "Integrated configuration with the latest version of Tailwind CSS.",
-        icon: "lucide:palette",
-        iconClass: "bg-pink-500/10 text-pink-400",
-      },
-    ]}
-  />
-  <Content2
-    items={[
-      {
-        title: "Responsive Design",
-        description:
-          "Base configuration for Meta tags, Open Graph, and Sitemap generation.",
-        icon: "lucide:scan-search",
-        iconClass: "bg-blue-500/10 text-blue-400",
-      },
-      {
-        title: "High Performance",
-        description: "Lightweight structure for fast load times.",
-        icon: "lucide:zap",
-        iconClass: "bg-purple-500/10 text-purple-400",
-      },
-      {
-        title: "Tailwind v4",
-        description:
-          "Integrated configuration with the latest version of Tailwind CSS.",
-        icon: "lucide:palette",
-        iconClass: "bg-pink-500/10 text-pink-400",
-      },
-    ]}
-    image={devImg}
-    imageAlt="Development"
-  >
-    <Fragment>
-      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
-        Development
-      </h3>
-      We provide a solid foundation to start your projects with best practices.
-    </Fragment>
-  </Content2>
-  <Content2
-    items={[
-      {
-        title: "Open Source",
-        description:
-          "Developed under the MIT license, free for personal and commercial use.",
-        icon: "lucide:github",
-        iconClass: "bg-indigo-500/10 text-indigo-400",
-      },
-      {
-        title: "Community Driven",
-        description:
-          "Built with the feedback and contributions of the developer community.",
-        icon: "lucide:users",
-        iconClass: "bg-orange-500/10 text-orange-400",
-      },
-      {
-        title: "Regular Updates",
-        description:
-          "Continuously improved with the latest technologies and best practices.",
-        icon: "lucide:refresh-cw",
-        iconClass: "bg-teal-500/10 text-teal-400",
-      },
-    ]}
-    image={openSourceImg}
-    imageAlt="Community and Open Source"
-    isReversed={true}
-  >
-    <Fragment>
-      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl mb-2">
-        Open Source & Community
-      </h3>
-      Join the revolution of modern web development. This project is open for everyone
-      to use, learn from, and contribute to.
-    </Fragment>
-  </Content2>
+  <WidgetWrapper containerClass="pt-8 md:pt-16 pb-12 md:pb-16">
+    <div
+      class="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-center"
+    >
+      <div class="space-y-8">
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-semibold text-primary"
+        >
+          <span class="h-2 w-2 rounded-full bg-primary"></span>
+          {programConfig.cohort.location} · {programConfig.cohort.timeframe}
+        </div>
+        <Headline
+          classes={{
+            container: "max-w-4xl",
+            subtitle: "max-w-2xl text-lg md:text-xl",
+            title: "text-5xl font-extrabold tracking-tight md:text-7xl",
+          }}
+          subtitle="14 days to find the blocker, fix it, and ship a real improvement with the right people around you."
+          title="What's the one thing blocking your growth?"
+          titleAs="h1"
+        />
+        <p class="max-w-2xl text-lg text-muted-foreground">
+          {programConfig.cohort.summary} Small, curated cohorts. Manual review. No
+          retreat theater.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <Button href={programConfig.ctas.apply.href} size="lg">
+            {programConfig.ctas.apply.label}
+          </Button>
+          <Button
+            href={programConfig.ctas.waitlist.href}
+            size="lg"
+            variant="secondary"
+          >
+            {programConfig.ctas.waitlist.label}
+          </Button>
+        </div>
+      </div>
+      <Card class="space-y-6 rounded-[2rem]">
+        <div class="space-y-2">
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+          >
+            Cohort snapshot
+          </p>
+          <h2 class="text-3xl font-bold tracking-tight text-foreground">
+            Project Edition
+          </h2>
+          <p class="text-muted-foreground">
+            Clear value proposition, focused execution, and a direct path into
+            the application flow.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Duration
+            </p>
+            <p class="mt-2 text-lg font-semibold text-foreground">
+              {programConfig.cohort.duration}
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Location
+            </p>
+            <p class="mt-2 text-lg font-semibold text-foreground">Koh Samui</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              Spots
+            </p>
+            <p class="mt-2 text-lg font-semibold text-foreground">Limited</p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-primary/20 bg-primary/10 p-5">
+          <p class="text-sm font-semibold text-foreground">
+            {programConfig.cohort.limitedSpots}
+          </p>
+          <p class="mt-2 text-sm text-muted-foreground">
+            Shared room $1,200 · Private room $2,000 · future cohorts designed
+            to reuse this structure.
+          </p>
+        </div>
+      </Card>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="problem">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="Projects usually do not stall because the team is lazy. They stall because the real blocker is harder to see from the inside."
+        tagline="The Problem"
+        title="Why projects plateau"
+      />
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {
+          programConfig.problemPoints.map((item) => (
+            <Card class="h-full">
+              <h3 class="text-xl font-semibold text-foreground">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {item.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+      <div
+        class="rounded-3xl border border-border bg-card p-6 text-lg text-foreground shadow-sm"
+      >
+        You do not need more abstract advice. You need a focused sprint with
+        structure, context, and people who can help you ship.
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="how-it-works">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="A lean v1 overview of how the sprint works, why it is structured this way, and what visitors should expect before applying."
+        tagline="How It Works"
+        title="What actually happens"
+      />
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {
+          programConfig.valuePoints.map((item) => (
+            <Card class="h-full">
+              <h3 class="text-xl font-semibold text-foreground">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {item.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="diagnostic">
+    <div
+      class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start"
+    >
+      <div class="space-y-4">
+        <Headline
+          classes={{ container: "max-w-2xl", subtitle: "text-lg" }}
+          subtitle="Before Day 1, the team invests real time into understanding your product so the sprint starts with momentum."
+          tagline="Pre-arrival Diagnostic"
+          title="We research you before you arrive"
+        />
+        <p class="text-muted-foreground">
+          The goal is to remove the wasted first-day explanation loop and
+          replace it with a shared diagnosis.
+        </p>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {
+          programConfig.diagnosticSteps.map((step, index) => (
+            <Card class="flex items-start gap-4">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <p class="text-sm text-muted-foreground">{step}</p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="tracks">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="One page now, but structured so future cohorts and tracks can split out into dedicated pages without reworking the content model."
+        tagline="Focus Areas"
+        title="Join the sprint that fits your gap"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          programConfig.focusAreas.map((area) => (
+            <Card class="h-full">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                {area.tag}
+              </p>
+              <h3 class="mt-3 text-2xl font-semibold text-foreground">
+                {area.title}
+              </h3>
+              <p class="mt-4 text-sm text-muted-foreground">
+                {area.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="specialists">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="These are the functional lanes available in v1. Specialist names stay generic until final approvals exist."
+        tagline="Support Model"
+        title="Senior practitioners, not coaches"
+      />
+      <div class="grid gap-6 md:grid-cols-2">
+        {
+          programConfig.specialists.map((specialist) => (
+            <Card class="h-full">
+              <h3 class="text-xl font-semibold text-foreground">
+                {specialist.title}
+              </h3>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {specialist.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="daily-rhythm">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="Structured but not rigid. Collaborative house energy without losing focus on the actual work."
+        tagline="Daily Rhythm"
+        title="How the days are shaped"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          programConfig.dailyRhythm.map((period) => (
+            <Card class="h-full">
+              <h3 class="text-xl font-semibold text-foreground">
+                {period.title}
+              </h3>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {period.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="outcomes">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div class="space-y-10">
+        <Headline
+          classes={{ container: "max-w-2xl", subtitle: "text-lg" }}
+          subtitle="The sprint is designed around outcomes that are visible after the trip, not just insight gathered during it."
+          tagline="Outcomes"
+          title="What you leave with"
+        />
+        <div class="grid gap-6">
+          {
+            programConfig.outcomes.map((outcome) => (
+              <Card>
+                <h3 class="text-xl font-semibold text-foreground">
+                  {outcome.title}
+                </h3>
+                <p class="mt-3 text-sm text-muted-foreground">
+                  {outcome.description}
+                </p>
+              </Card>
+            ))
+          }
+        </div>
+      </div>
+      <Card class="space-y-6">
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+          >
+            Production support
+          </p>
+          <h3 class="mt-3 text-3xl font-bold tracking-tight text-foreground">
+            Leave with professional assets
+          </h3>
+          <p class="mt-3 text-muted-foreground">
+            Shipping means more when the work also leaves with something people
+            can actually see and share.
+          </p>
+        </div>
+        <div class="grid gap-4">
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3"
+          >
+            <Icon class="h-5 w-5 text-primary" name="lucide:video" />
+            <span class="text-sm text-foreground"
+              >Demo video for your product</span
+            >
+          </div>
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3"
+          >
+            <Icon class="h-5 w-5 text-primary" name="lucide:image" />
+            <span class="text-sm text-foreground"
+              >Launch assets and graphics</span
+            >
+          </div>
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3"
+          >
+            <Icon class="h-5 w-5 text-primary" name="lucide:presentation" />
+            <span class="text-sm text-foreground">Pitch deck refinements</span>
+          </div>
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3"
+          >
+            <Icon class="h-5 w-5 text-primary" name="lucide:camera" />
+            <span class="text-sm text-foreground">
+              Professional photos, b-roll, and social-ready content
+            </span>
+          </div>
+        </div>
+      </Card>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="pricing">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="Public pricing, what's included, and what is deliberately excluded from v1 expectations."
+        tagline="Pricing"
+        title="Straightforward pricing for a small, curated cohort"
+      />
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          programConfig.pricingOptions.map((option) => (
+            <Card class="h-full">
+              <h3 class="text-xl font-semibold text-foreground">
+                {option.title}
+              </h3>
+              <p class="mt-3 text-4xl font-bold tracking-tight text-foreground">
+                {option.price}
+              </p>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {option.description}
+              </p>
+              {option.note && (
+                <p class="mt-4 text-sm font-medium text-primary">
+                  {option.note}
+                </p>
+              )}
+            </Card>
+          ))
+        }
+      </div>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <Card>
+          <h3 class="text-xl font-semibold text-foreground">Included</h3>
+          <div class="mt-5 grid gap-3">
+            {
+              programConfig.included.map((item) => (
+                <div class="flex items-center gap-3 text-sm text-muted-foreground">
+                  <Icon
+                    class="h-4 w-4 shrink-0 text-primary"
+                    name="lucide:check"
+                  />
+                  <span>{item}</span>
+                </div>
+              ))
+            }
+          </div>
+        </Card>
+        <Card>
+          <h3 class="text-xl font-semibold text-foreground">Not included</h3>
+          <div class="mt-5 grid gap-3">
+            {
+              programConfig.notIncluded.map((item) => (
+                <div class="flex items-center gap-3 text-sm text-muted-foreground">
+                  <Icon class="h-4 w-4 shrink-0 text-primary" name="lucide:x" />
+                  <span>{item}</span>
+                </div>
+              ))
+            }
+          </div>
+        </Card>
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="fit">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
+      <div class="space-y-10">
+        <Headline
+          classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+          subtitle="The site should make it easy to self-qualify before starting the application."
+          tagline="Who It's For"
+          title="Built for teams with something real to ship"
+        />
+        <div class="grid gap-6 md:grid-cols-3">
+          {
+            programConfig.audiences.map((audience) => (
+              <Card class="h-full">
+                <h3 class="text-xl font-semibold text-foreground">
+                  {audience.title}
+                </h3>
+                <p class="mt-3 text-sm text-muted-foreground">
+                  {audience.description}
+                </p>
+              </Card>
+            ))
+          }
+        </div>
+      </div>
+      <Card class="space-y-5">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+        >
+          Selection criteria
+        </p>
+        <h3 class="text-2xl font-bold tracking-tight text-foreground">
+          What we're looking for
+        </h3>
+        <div class="grid gap-4">
+          {
+            programConfig.selectionCriteria.map((item) => (
+              <div class="flex items-start gap-3 rounded-2xl border border-border bg-background px-4 py-3 text-sm text-muted-foreground">
+                <Icon
+                  class="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                  name="lucide:arrow-right"
+                />
+                <span>{item}</span>
+              </div>
+            ))
+          }
+        </div>
+      </Card>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="about">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+      <Card class="space-y-5">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+        >
+          Founder context
+        </p>
+        <h2 class="text-3xl font-bold tracking-tight text-foreground">
+          {programConfig.about.title}
+        </h2>
+        <p class="text-muted-foreground">{programConfig.about.description}</p>
+        <div class="grid gap-3">
+          {
+            programConfig.about.highlights.map((highlight) => (
+              <div class="rounded-2xl border border-border bg-background px-4 py-3 text-sm text-muted-foreground">
+                {highlight}
+              </div>
+            ))
+          }
+        </div>
+      </Card>
+      <div class="grid gap-6 md:grid-cols-3">
+        {
+          programConfig.trustAssets.map((item) => (
+            <Card class="h-full">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                {item.label}
+              </p>
+              <h3 class="mt-3 text-xl font-semibold text-foreground">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {item.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="faq">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle="Launch FAQ content pulled directly from the discovery brief and centralized so it can evolve as later cohorts are added."
+        tagline="FAQ"
+        title="Common questions before you apply"
+      />
+      <div class="grid gap-4">
+        {
+          programConfig.faqItems.map((item) => (
+            <details class="group rounded-3xl border border-border bg-card p-6 shadow-sm">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left">
+                <span class="text-lg font-semibold text-foreground">
+                  {item.title}
+                </span>
+                <Icon
+                  class="h-5 w-5 shrink-0 text-primary transition-transform group-open:rotate-45"
+                  name="lucide:plus"
+                />
+              </summary>
+              <p class="mt-4 text-sm leading-7 text-muted-foreground">
+                {item.description}
+              </p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="waitlist" containerClass="pb-12 md:pb-16">
+    <Card class="rounded-[2rem]">
+      <div
+        class="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,1.1fr)] lg:items-start"
+      >
+        <div class="space-y-5">
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+          >
+            Final CTA
+          </p>
+          <h2
+            class="text-4xl font-bold tracking-tight text-foreground md:text-5xl"
+          >
+            Ready to apply or want to stay close to the next cohort?
+          </h2>
+          <p class="max-w-2xl text-lg text-muted-foreground">
+            {programConfig.waitlist.description}
+          </p>
+          <div class="flex flex-col gap-4 sm:flex-row">
+            <Button href={programConfig.ctas.apply.href} size="lg">
+              {programConfig.ctas.apply.label}
+            </Button>
+            <Button
+              href="/apply#application-form"
+              size="lg"
+              variant="secondary"
+            >
+              Open the full application
+            </Button>
+          </div>
+        </div>
+        <div
+          class="rounded-3xl border border-border bg-background p-6 shadow-sm"
+        >
+          <h3 class="text-2xl font-semibold tracking-tight text-foreground">
+            {programConfig.waitlist.title}
+          </h3>
+          <p class="mt-3 text-sm text-muted-foreground">
+            Quick email capture for visitors who are interested but not ready to
+            start the full form yet.
+          </p>
+          <div class="mt-6">
+            <WaitlistForm />
+          </div>
+        </div>
+      </div>
+    </Card>
+  </WidgetWrapper>
 </BaseLayout>

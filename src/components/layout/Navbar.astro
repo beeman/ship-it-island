@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from "@/config/site";
+import { programConfig } from "@/config/program";
 import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 ---
 
@@ -36,12 +37,10 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 
     <div class="hidden md:flex items-center gap-4">
       <a
-        href={siteConfig.socialLinks.github}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={programConfig.ctas.apply.href}
         class="rounded-full bg-foreground/10 px-4 py-2 text-sm font-semibold text-foreground transition-all hover:bg-foreground/20"
       >
-        GitHub
+        {programConfig.ctas.apply.label}
       </a>
       <ThemeToggle />
     </div>
@@ -100,6 +99,7 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
       {
         siteConfig.navLinks.map((link) => (
           <a
+            data-mobile-link
             href={link.href}
             class="block rounded-md px-3 py-2 text-base font-medium text-foreground transition-colors hover:bg-white/10 hover:text-primary"
           >
@@ -108,37 +108,57 @@ import ThemeToggle from "@/components/ui/ThemeToggle.astro";
         ))
       }
       <a
-        href={siteConfig.socialLinks.github}
-        target="_blank"
-        class="block rounded-md px-3 py-2 text-base font-medium text-blue-400 transition-colors hover:cursor-pointer hover:bg-blue-500/10 hover:text-blue-300"
-        >GitHub</a
+        data-mobile-link
+        href={programConfig.ctas.apply.href}
+        class="block rounded-md px-3 py-2 text-base font-medium text-primary transition-colors hover:cursor-pointer hover:bg-primary/10"
+        >{programConfig.ctas.apply.label}</a
       >
     </div>
   </div>
 </nav>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
+  const setupMobileMenu = () => {
     const button = document.getElementById("mobile-menu-button");
     const menu = document.getElementById("mobile-menu");
-    const iconClosed = document.getElementById("menu-icon-closed");
-    const iconOpen = document.getElementById("menu-icon-open");
 
-    // Remove old event listener if it exists to prevent multiple triggers
-    const newButton = button?.cloneNode(true);
-    if (newButton && button && button.parentNode) {
-      button.parentNode.replaceChild(newButton, button);
+    if (!button || !menu || button.dataset.menuSetup === "true") {
+      return;
     }
 
-    const finalButton = document.getElementById("mobile-menu-button");
+    button.dataset.menuSetup = "true";
 
-    finalButton?.addEventListener("click", () => {
-      const isExpanded = finalButton.getAttribute("aria-expanded") === "true";
+    const mobileLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>("[data-mobile-link]"),
+    );
+    const finalIconClosed = document.getElementById("menu-icon-closed");
+    const finalIconOpen = document.getElementById("menu-icon-open");
+    const closeMenu = () => {
+      button.setAttribute("aria-expanded", "false");
+      menu.classList.add("hidden");
+      finalIconClosed?.classList.remove("hidden");
+      finalIconOpen?.classList.add("hidden");
+    };
 
-      finalButton.setAttribute("aria-expanded", String(!isExpanded));
-      menu?.classList.toggle("hidden");
-      iconClosed?.classList.toggle("hidden");
-      iconOpen?.classList.toggle("hidden");
+    button.addEventListener("click", () => {
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+        closeMenu();
+        return;
+      }
+
+      button.setAttribute("aria-expanded", "true");
+      menu.classList.remove("hidden");
+      finalIconClosed?.classList.add("hidden");
+      finalIconOpen?.classList.remove("hidden");
     });
-  });
+
+    for (const link of mobileLinks) {
+      link.addEventListener("click", closeMenu);
+    }
+  };
+
+  setupMobileMenu();
+  document.addEventListener("astro:page-load", setupMobileMenu);
 </script>

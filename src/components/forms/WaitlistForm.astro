@@ -1,0 +1,74 @@
+---
+import Button from "@/components/ui/Button.astro";
+import { programConfig } from "@/config/program";
+
+const submitUrl = import.meta.env.PUBLIC_SHIP_IT_ISLAND_SUBMIT_URL ?? "";
+---
+
+<form
+  id="waitlist-form"
+  class="space-y-4"
+  data-waitlist-form
+  data-submit-url={submitUrl}
+  data-success-message={programConfig.waitlist.successMessage}
+  novalidate
+>
+  <div class="space-y-2" data-form-fields>
+    <label class="text-sm font-semibold text-foreground" for="waitlist-email">
+      Email
+    </label>
+    <input
+      id="waitlist-email"
+      name="email"
+      type="email"
+      placeholder="you@project.xyz"
+      required
+      autocomplete="email"
+      class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+    />
+    <p class="hidden text-sm text-red-300" data-error-for="email"></p>
+  </div>
+
+  <p class="hidden" data-form-status></p>
+
+  <Button
+    class="w-full justify-center sm:w-auto"
+    data-idle-label="Join waitlist"
+    data-submit-button
+    type="submit"
+  >
+    <span data-submit-label>Join waitlist</span>
+  </Button>
+
+  <p class="text-sm text-muted-foreground">
+    {programConfig.waitlist.description}
+  </p>
+</form>
+
+<script>
+  import { setupSubmissionForm } from "@/scripts/submission-form";
+
+  const initWaitlistForm = () => {
+    const form = document.querySelector<HTMLFormElement>(
+      "[data-waitlist-form]",
+    );
+
+    if (!form) {
+      return;
+    }
+
+    setupSubmissionForm({
+      errorMessage:
+        "We couldn't add you to the waitlist right now. Please try again in a moment.",
+      formSelector: "[data-waitlist-form]",
+      pendingLabel: "Joining...",
+      sourcePath: "/",
+      submissionType: "waitlist",
+      submitUrl: form.dataset.submitUrl ?? "",
+      successMessage: form.dataset.successMessage ?? "You are on the waitlist.",
+    });
+  };
+
+  initWaitlistForm();
+  document.addEventListener("astro:page-load", initWaitlistForm);
+</script>

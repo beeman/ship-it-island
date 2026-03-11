@@ -1,0 +1,65 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/ui/Button.astro";
+import Card from "@/components/ui/Card.astro";
+import WidgetWrapper from "@/components/widgets/WidgetWrapper.astro";
+import { programConfig } from "@/config/program";
+import { siteConfig } from "@/config/site";
+
+const metadata = {
+  title: `Thank You | ${siteConfig.name}`,
+  description:
+    "Confirmation page for successful Ship It Island application submissions.",
+  ignoreTitleTemplate: true,
+};
+---
+
+<BaseLayout {metadata}>
+  <WidgetWrapper containerClass="min-h-[calc(100vh-220px)] flex items-center">
+    <div class="mx-auto max-w-3xl">
+      <Card class="space-y-8 rounded-[2rem] text-center">
+        <div class="space-y-4">
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+          >
+            You're on the waitlist
+          </p>
+          <h1
+            class="text-4xl font-extrabold tracking-tight text-foreground md:text-5xl"
+          >
+            Thanks for applying to Ship It Island
+          </h1>
+          <p class="mx-auto max-w-2xl text-lg text-muted-foreground">
+            Your submission is in the review queue. We'll look it over and reach
+            out manually with next steps. No auto-booking or interview
+            scheduling happens here yet.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-sm font-semibold text-foreground">Status</p>
+            <p class="mt-2 text-sm text-muted-foreground">Waitlist review</p>
+          </div>
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-sm font-semibold text-foreground">Location</p>
+            <p class="mt-2 text-sm text-muted-foreground">
+              {programConfig.cohort.location}
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-sm font-semibold text-foreground">Timing</p>
+            <p class="mt-2 text-sm text-muted-foreground">
+              {programConfig.cohort.timeframe}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+          <Button href="/">Back to home</Button>
+          <Button href="/#faq" variant="secondary"> Review the FAQ </Button>
+        </div>
+      </Card>
+    </div>
+  </WidgetWrapper>
+</BaseLayout>
