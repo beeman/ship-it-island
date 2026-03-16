@@ -35,7 +35,7 @@ const metadata = {
             subtitle: "max-w-2xl text-lg md:text-xl",
             title: "text-5xl font-extrabold tracking-tight md:text-7xl",
           }}
-          subtitle="14 days to find the blocker, fix it, and ship a real improvement with the right people around you."
+          subtitle="14 days to find it, fix it, and ship it, with the right people around you."
           title="What's the one thing blocking your growth?"
           titleAs="h1"
         />
@@ -472,6 +472,16 @@ const metadata = {
           {programConfig.about.title}
         </h2>
         <p class="text-muted-foreground">{programConfig.about.description}</p>
+      </Card>
+      <Card class="space-y-5">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+        >
+          Past activations
+        </p>
+        <h3 class="text-3xl font-bold tracking-tight text-foreground">
+          Proven in real builder environments
+        </h3>
         <div class="grid gap-3">
           {
             programConfig.about.highlights.map((highlight) => (
@@ -482,23 +492,6 @@ const metadata = {
           }
         </div>
       </Card>
-      <div class="grid gap-6 md:grid-cols-3">
-        {
-          programConfig.trustAssets.map((item) => (
-            <Card class="h-full">
-              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                {item.label}
-              </p>
-              <h3 class="mt-3 text-xl font-semibold text-foreground">
-                {item.title}
-              </h3>
-              <p class="mt-3 text-sm text-muted-foreground">
-                {item.description}
-              </p>
-            </Card>
-          ))
-        }
-      </div>
     </div>
   </WidgetWrapper>
 

@@ -37,10 +37,6 @@ export interface PricingOption {
   title: string;
 }
 
-export interface TrustAsset extends ContentItem {
-  label: string;
-}
-
 export interface ProgramConfig {
   about: {
     description: string;
@@ -77,7 +73,6 @@ export interface ProgramConfig {
   problemPoints: ContentItem[];
   selectionCriteria: string[];
   specialists: ContentItem[];
-  trustAssets: TrustAsset[];
   valuePoints: ContentItem[];
   waitlist: {
     description: string;

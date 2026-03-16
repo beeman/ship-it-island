@@ -3,11 +3,12 @@ import type { ProgramConfig } from "@/types/program";
 export const programConfig: ProgramConfig = {
   about: {
     description:
-      "Ship It Island is hosted by Quan. The launch site keeps this section concise until the final long-form bio, credentials, and approved media assets are ready.",
+      "Quan has spent 3+ years building wellness and performance programming for Web3 builders and creators, from morning runs at Solana Breakpoint to recovery sessions at major conferences across Dubai, Bangkok, HCMC, and Da Nang. Through PILLED Movement Systems, he's worked with nomad communities, builder houses, and conference organizers to design activations that help people perform better, not just feel good. Ship It Island is the next evolution: a focused execution sprint where projects don't just learn, they ship.",
     highlights: [
-      "Founder story and credentials can expand here without changing the site structure.",
-      "Breakpoint, PILLED, and related activations can drop into the trust block as approved assets arrive.",
-      "Partner references can be added later without redesigning the core experience.",
+      "Builder house wellness integration in Bangkok, HCMC, and Da Nang",
+      "Conference wellness programming across TOKEN2049, Breakpoint, and regional Web3 events",
+      "Morning run series with 100+ participants across Southeast Asia",
+      'Solana Breakpoint "Leg Day" activation',
     ],
     title: "About Quan",
   },
@@ -48,9 +49,34 @@ export const programConfig: ProgramConfig = {
         {
           label: "How did you hear about Ship It Island?",
           name: "heardAbout",
-          placeholder: "Referral, event, X, friend, community",
+          options: [
+            {
+              label: "Community",
+              value: "Community",
+            },
+            {
+              label: "Conference or event",
+              value: "Conference or event",
+            },
+            {
+              label: "Friend or referral",
+              value: "Friend or referral",
+            },
+            {
+              label: "Other",
+              value: "Other",
+            },
+            {
+              label: "Telegram",
+              value: "Telegram",
+            },
+            {
+              label: "Twitter / X",
+              value: "Twitter / X",
+            },
+          ],
           required: true,
-          type: "text",
+          type: "select",
         },
       ],
       title: "Section 1: About You",
@@ -72,10 +98,12 @@ export const programConfig: ProgramConfig = {
           type: "text",
         },
         {
+          description:
+            "If you do not have a public site yet, link to a demo, deck, or video.",
           label: "Website or app link",
           name: "projectLink",
-          placeholder: "https://",
-          required: true,
+          placeholder: "https:// or a demo link",
+          required: false,
           type: "url",
         },
         {
@@ -199,6 +227,20 @@ export const programConfig: ProgramConfig = {
     },
     {
       fields: [
+        {
+          label: "What's one skill or strength your team brings?",
+          name: "teamStrength",
+          placeholder: "Engineering, growth, product sense, community, design",
+          required: false,
+          type: "text",
+        },
+        {
+          label: "What's one skill or area where you want more support?",
+          name: "supportNeeded",
+          placeholder: "Acquisition, onboarding, narrative, monetization",
+          required: false,
+          type: "text",
+        },
         {
           label: "Are you open to feedback from other projects in the cohort?",
           name: "openToFeedback",
@@ -422,6 +464,11 @@ export const programConfig: ProgramConfig = {
     },
     {
       description:
+        "No. Two days during the sprint are intentionally unstructured. There are no group meals or programming on those days, so you can explore the island, rest, or keep working on your own.",
+      title: "Are all 14 days fully programmed?",
+    },
+    {
+      description:
         "Yes. Solo founders are welcome, though two to three people from the core team is ideal.",
       title: "Can I send just one person from my team?",
     },
@@ -465,7 +512,11 @@ export const programConfig: ProgramConfig = {
     "Specialist support throughout the sprint",
     "Wellness programming",
   ],
-  notIncluded: ["Flights", "Personal spending", "Two solo exploration days"],
+  notIncluded: [
+    "Flights",
+    "Group meals or programming during two unstructured days",
+    "Personal spending",
+  ],
   outcomes: [
     {
       description:
@@ -552,26 +603,6 @@ export const programConfig: ProgramConfig = {
       description:
         "Content strategy and social systems focused on meaningful engagement rather than vanity metrics.",
       title: "Marketing / social",
-    },
-  ],
-  trustAssets: [
-    {
-      description:
-        "Reserved space for final approved founder copy, credentials, and context once that material is signed off.",
-      label: "Copy slot",
-      title: "Founder bio",
-    },
-    {
-      description:
-        "Reserved media slot for Breakpoint, PILLED, and related event photography or video once assets are cleared for launch.",
-      label: "Media slot",
-      title: "Past activations",
-    },
-    {
-      description:
-        "Reserved partner reference slot so Island DAO or other logos can be added only after confirmation.",
-      label: "Trust slot",
-      title: "Partners",
     },
   ],
   valuePoints: [
