@@ -30,27 +30,33 @@ const metadata = {
             Thanks for applying to Ship It Island
           </h1>
           <p class="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Your submission is in the review queue. We'll look it over and reach
-            out manually with next steps. No auto-booking or interview
-            scheduling happens here yet.
+            Your application is in the review queue and your spot on the
+            waitlist is confirmed. We review submissions manually and reach out
+            directly if the fit is right for this cohort.
           </p>
         </div>
 
-        <div class="grid gap-4 md:grid-cols-3">
+        <div class="grid gap-4 md:grid-cols-2">
           <div class="rounded-2xl border border-border bg-background p-4">
             <p class="text-sm font-semibold text-foreground">Status</p>
-            <p class="mt-2 text-sm text-muted-foreground">Waitlist review</p>
+            <p class="mt-2 text-sm text-muted-foreground">Waitlist confirmed</p>
           </div>
           <div class="rounded-2xl border border-border bg-background p-4">
-            <p class="text-sm font-semibold text-foreground">Location</p>
+            <p class="text-sm font-semibold text-foreground">Review</p>
             <p class="mt-2 text-sm text-muted-foreground">
-              {programConfig.cohort.location}
+              Manual review by the Ship It Island team
             </p>
           </div>
           <div class="rounded-2xl border border-border bg-background p-4">
-            <p class="text-sm font-semibold text-foreground">Timing</p>
+            <p class="text-sm font-semibold text-foreground">Timeline</p>
             <p class="mt-2 text-sm text-muted-foreground">
-              {programConfig.cohort.timeframe}
+              Rolling outreach after review
+            </p>
+          </div>
+          <div class="rounded-2xl border border-border bg-background p-4">
+            <p class="text-sm font-semibold text-foreground">Cohort</p>
+            <p class="mt-2 text-sm text-muted-foreground">
+              {programConfig.cohort.location} · {programConfig.cohort.timeframe}
             </p>
           </div>
         </div>

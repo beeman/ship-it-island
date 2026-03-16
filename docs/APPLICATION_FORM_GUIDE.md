@@ -65,10 +65,14 @@ Application submissions include all application fields from `programConfig.appli
 - `roomPreference`
 - `socialProfile`
 - `sprintGoal`
+- `supportNeeded`
 - `teamSize`
+- `teamStrength`
 - `telegramHandle`
 - `yourName`
 - `yourRole`
+
+`projectLink` is optional and can be a public site, demo, deck, or video.
 
 The frontend sends JSON like this:
 
@@ -133,7 +137,7 @@ Create one spreadsheet with two tabs:
 Recommended `applications` header row:
 
 ```text
-submittedAt | submissionType | sourcePath | status | yourName | yourRole | email | telegramHandle | heardAbout | projectName | projectDescription | projectLink | currentStage | activeUsers | primaryBlocker | sprintGoal | focusArea | teamSize | roomPreference | openToFeedback | caseStudyComfort | canCommit | anythingElse | socialProfile
+submittedAt | submissionType | sourcePath | status | activeUsers | anythingElse | canCommit | caseStudyComfort | currentStage | email | focusArea | heardAbout | openToFeedback | primaryBlocker | projectDescription | projectLink | projectName | roomPreference | socialProfile | sprintGoal | supportNeeded | teamSize | teamStrength | telegramHandle | yourName | yourRole
 ```
 
 Recommended `waitlist` header row:
@@ -183,26 +187,28 @@ function doPost(event) {
         "submissionType",
         "sourcePath",
         "status",
-        "yourName",
-        "yourRole",
+        "activeUsers",
+        "anythingElse",
+        "canCommit",
+        "caseStudyComfort",
+        "currentStage",
         "email",
-        "telegramHandle",
+        "focusArea",
         "heardAbout",
-        "projectName",
+        "openToFeedback",
+        "primaryBlocker",
         "projectDescription",
         "projectLink",
-        "currentStage",
-        "activeUsers",
-        "primaryBlocker",
-        "sprintGoal",
-        "focusArea",
-        "teamSize",
+        "projectName",
         "roomPreference",
-        "openToFeedback",
-        "caseStudyComfort",
-        "canCommit",
-        "anythingElse",
         "socialProfile",
+        "sprintGoal",
+        "supportNeeded",
+        "teamSize",
+        "teamStrength",
+        "telegramHandle",
+        "yourName",
+        "yourRole",
       ];
 
       appendRow("applications", headers, {
