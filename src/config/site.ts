@@ -1,7 +1,7 @@
 import ogImage from "@/assets/og-image.png";
 import type { NavLink } from "@/types/types";
 
-const defaultSiteUrl = "https://ship-it-island.beeman.dev";
+const defaultSiteUrl = "https://ship-it-island.xyz";
 
 const navLinks: NavLink[] = [
   { href: "/#how-it-works", text: "How It Works" },

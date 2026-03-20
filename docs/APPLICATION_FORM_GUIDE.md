@@ -271,7 +271,7 @@ function doPost(event) {
 Set this in your local `.env`:
 
 ```bash
-PUBLIC_SHIP_IT_ISLAND_SITE_URL=https://ship-it-island.beeman.dev
+PUBLIC_SHIP_IT_ISLAND_SITE_URL=https://ship-it-island.xyz
 PUBLIC_SHIP_IT_ISLAND_SUBMIT_URL=https://script.google.com/macros/s/DEPLOYMENT_ID/exec
 ```
 
