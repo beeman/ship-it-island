@@ -51,28 +51,28 @@ export const programConfig: ProgramConfig = {
           name: "heardAbout",
           options: [
             {
-              label: "Community",
-              value: "Community",
-            },
-            {
-              label: "Conference or event",
-              value: "Conference or event",
-            },
-            {
-              label: "Friend or referral",
-              value: "Friend or referral",
-            },
-            {
-              label: "Other",
-              value: "Other",
+              label: "Twitter/X",
+              value: "Twitter/X",
             },
             {
               label: "Telegram",
               value: "Telegram",
             },
             {
-              label: "Twitter / X",
-              value: "Twitter / X",
+              label: "Friend/referral",
+              value: "Friend/referral",
+            },
+            {
+              label: "Island DAO",
+              value: "Island DAO",
+            },
+            {
+              label: "Other event",
+              value: "Other event",
+            },
+            {
+              label: "Other (please specify)",
+              value: "Other (please specify)",
             },
           ],
           required: true,
@@ -207,16 +207,16 @@ export const programConfig: ProgramConfig = {
           name: "roomPreference",
           options: [
             {
-              label: "Shared room ($1,200/person)",
-              value: "Shared room ($1,200/person)",
+              label: "Early Bird — private room included ($2,000)",
+              value: "Early Bird — private room included ($2,000)",
             },
             {
-              label: "Private room ($2,000/person)",
-              value: "Private room ($2,000/person)",
+              label: "Regular — shared room ($2,400)",
+              value: "Regular — shared room ($2,400)",
             },
             {
-              label: "Flexible / no preference",
-              value: "Flexible / no preference",
+              label: "Regular — private room upgrade ($2,800)",
+              value: "Regular — private room upgrade ($2,800)",
             },
           ],
           required: true,
@@ -258,7 +258,7 @@ export const programConfig: ProgramConfig = {
               value: "No",
             },
           ],
-          required: false,
+          required: true,
           type: "select",
         },
         {
@@ -279,7 +279,7 @@ export const programConfig: ProgramConfig = {
               value: "No",
             },
           ],
-          required: false,
+          required: true,
           type: "select",
         },
         {
@@ -344,12 +344,24 @@ export const programConfig: ProgramConfig = {
     },
   ],
   cohort: {
+    applySummary:
+      "Koh Samui, Thailand · June 2026 · 4-6 projects max · Two cohorts available",
     duration: "14 days",
+    heroSnapshot: {
+      pricing: "Early Bird $2,000 (private room included) · Regular $2,400",
+      timing: "Two cohorts, June 2026 · Timed with Island DAO",
+    },
     limitedSpots: "4-6 projects max · around 10-12 people total",
     location: "Koh Samui, Thailand",
     summary:
       "A focused execution sprint for Web3 projects ready to ship a real improvement before they leave.",
     timeframe: "June 2026",
+  },
+  cohortsCallout: {
+    description:
+      "Two back-to-back 14-day cohorts from the same villa. Teams can apply for either or both.",
+    note: "Sponsored cohorts may offer discounted or free entry.",
+    title: "Two Cohorts — June 2026",
   },
   ctas: {
     apply: {
@@ -503,9 +515,14 @@ export const programConfig: ProgramConfig = {
       title: "Business Model",
     },
   ],
+  grantCallout: {
+    description:
+      "Depending on sponsors, grant rewards are available for the team(s) with the highest execution ROI — money back on registration, free spot in a future cohort, or priority placement in future runs.",
+    title: "The Ship It Grant",
+  },
   included: [
     "10+ hour pre-sprint diagnostic",
-    "$1,200 production budget per team",
+    "All production and specialist fees included",
     "12 group meals",
     "14 nights accommodation",
     "90-day post-sprint follow-up",
@@ -534,25 +551,21 @@ export const programConfig: ProgramConfig = {
       title: "Support",
     },
   ],
+  pricingAddon:
+    "Extended specialist time available as an add-on — discussed during onboarding.",
   pricingOptions: [
     {
-      description:
-        "For founders comfortable sharing a room while keeping the full sprint experience and included benefits.",
-      price: "$1,200",
-      title: "Shared room",
+      description: "First 6 people / 3 teams per cohort.",
+      featured: true,
+      note: "Private room included. All-inclusive.",
+      price: "$2,000 / person",
+      title: "Early Bird",
     },
     {
-      description:
-        "For attendees who want a private room without changing the rest of the sprint structure.",
-      price: "$2,000",
-      title: "Private room",
-    },
-    {
-      description:
-        "Teams of three or more can request a custom quote based on rooming and support needs.",
-      note: "Custom quote available",
-      price: "Ask us",
-      title: "Larger teams",
+      description: "Shared room. All-inclusive.",
+      note: "Private room upgrade: +$400.",
+      price: "$2,400 / person",
+      title: "Regular",
     },
   ],
   problemPoints: [
@@ -605,6 +618,43 @@ export const programConfig: ProgramConfig = {
       title: "Marketing / social",
     },
   ],
+  sprintTimeline: {
+    after: {
+      description:
+        "Check-ins at 30, 60, and 90 days. Alumni community access. Continued specialist access. Fundraising introductions where relevant.",
+      title: "After the Sprint",
+    },
+    intro:
+      "Every day is built around execution — not workshops, not lectures, not vibes.",
+    steps: [
+      {
+        description:
+          "We do the homework so you don't waste Day 1. 10+ hours of diagnostic research on your project — product, users, metrics, competitors, gaps. You arrive to a full diagnostic and a matched specialist team ready to work.",
+        title: "Before You Arrive (1 Week Pre-Sprint)",
+      },
+      {
+        description:
+          'Present findings from pre-arrival research. Confirm the blocker. Define what "shipped" means by Day 14. Meet your specialists and your cohort.',
+        title: "Days 1–2: Diagnosis + Roadmap",
+      },
+      {
+        description:
+          "Daily standups. Deep work blocks with specialist support. Hands-on sessions — not advice, actual building alongside you. Peer feedback rounds. Real-world testing at local venues. Two solo days built in — no programming, explore or keep building.",
+        title: "Days 3–10: Deep Execution",
+      },
+      {
+        description:
+          "Final iterations on the core deliverable. Launch prep. Demo rehearsal. Metrics baseline for post-sprint tracking.",
+        title: "Days 11–13: Polish + Ship Prep",
+      },
+      {
+        description:
+          "Go live. Cohort demo day — present what you built. Timed with Island DAO — advisors and builders in the room. Transition to 90-day follow-up support.",
+        title: "Day 14: Ship Day",
+      },
+    ],
+    title: "Your 14 Days",
+  },
   valuePoints: [
     {
       description:

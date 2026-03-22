@@ -31,64 +31,95 @@ const submitUrl = import.meta.env.PUBLIC_SHIP_IT_ISLAND_SUBMIT_URL ?? "";
                 : "space-y-2";
 
               return (
-                <div class={wrapperClass}>
-                  <label
-                    class="flex items-center gap-2 text-sm font-semibold text-foreground"
-                    for={field.name}
-                  >
-                    <span>{field.label}</span>
-                    {field.required && (
-                      <span class="text-xs uppercase tracking-[0.2em] text-primary">
-                        Required
-                      </span>
-                    )}
-                  </label>
-
-                  {field.description && (
-                    <p class="text-sm text-muted-foreground">
-                      {field.description}
-                    </p>
-                  )}
-
-                  {isSelect ? (
-                    <select
-                      id={field.name}
-                      name={field.name}
-                      required={field.required}
-                      class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                <>
+                  <div class={wrapperClass}>
+                    <label
+                      class="flex items-center gap-2 text-sm font-semibold text-foreground"
+                      for={field.name}
                     >
-                      <option value="">Select an option</option>
-                      {field.options?.map((option) => (
-                        <option value={option.value}>{option.label}</option>
-                      ))}
-                    </select>
-                  ) : isTextArea ? (
-                    <textarea
-                      id={field.name}
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      required={field.required}
-                      rows={field.rows ?? 4}
-                      autocomplete={field.autocomplete}
-                      class="block min-h-32 w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
-                    />
-                  ) : (
-                    <input
-                      id={field.name}
-                      name={field.name}
-                      type={field.type as "email" | "text" | "url"}
-                      placeholder={field.placeholder}
-                      required={field.required}
-                      autocomplete={field.autocomplete}
-                      class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
-                    />
-                  )}
+                      <span>{field.label}</span>
+                      {field.required && (
+                        <span class="text-xs uppercase tracking-[0.2em] text-primary">
+                          Required
+                        </span>
+                      )}
+                    </label>
 
-                  <p
-                    class="hidden text-sm text-red-300"
-                    data-error-for={field.name}
-                  />
-                </div>
+                    {field.description && (
+                      <p class="text-sm text-muted-foreground">
+                        {field.description}
+                      </p>
+                    )}
+
+                    {isSelect ? (
+                      <select
+                        id={field.name}
+                        name={field.name}
+                        required={field.required}
+                        class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                      >
+                        <option value="">Select an option</option>
+                        {field.options?.map((option) => (
+                          <option value={option.value}>{option.label}</option>
+                        ))}
+                      </select>
+                    ) : isTextArea ? (
+                      <textarea
+                        id={field.name}
+                        name={field.name}
+                        placeholder={field.placeholder}
+                        required={field.required}
+                        rows={field.rows ?? 4}
+                        autocomplete={field.autocomplete}
+                        class="block min-h-32 w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                      />
+                    ) : (
+                      <input
+                        id={field.name}
+                        name={field.name}
+                        type={field.type as "email" | "text" | "url"}
+                        placeholder={field.placeholder}
+                        required={field.required}
+                        autocomplete={field.autocomplete}
+                        class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                      />
+                    )}
+
+                    <p
+                      class="hidden text-sm text-red-300"
+                      data-error-for={field.name}
+                    />
+                  </div>
+
+                  {field.name === "heardAbout" && (
+                    <div
+                      class="hidden space-y-2 md:col-span-2"
+                      data-heard-about-other-wrapper
+                    >
+                      <label
+                        class="flex items-center gap-2 text-sm font-semibold text-foreground"
+                        for="heardAboutOther"
+                      >
+                        <span>Please specify</span>
+                        <span class="text-xs uppercase tracking-[0.2em] text-primary">
+                          Required
+                        </span>
+                      </label>
+                      <input
+                        id="heardAboutOther"
+                        name="heardAboutOther"
+                        type="text"
+                        placeholder="Tell us where you heard about Ship It Island"
+                        disabled
+                        class="block w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition focus:border-primary focus:ring-4 focus:ring-primary/20"
+                      />
+                      <p
+                        class="hidden text-sm text-red-300"
+                        data-error-for="heardAboutOther"
+                      />
+                    </div>
+                  )}
+                </>
               );
             })}
           </div>
@@ -118,6 +149,41 @@ const submitUrl = import.meta.env.PUBLIC_SHIP_IT_ISLAND_SUBMIT_URL ?? "";
 <script>
   import { setupSubmissionForm } from "@/scripts/submission-form";
 
+  const heardAboutOtherValue = "Other (please specify)";
+
+  const syncHeardAboutOtherField = (form: HTMLFormElement) => {
+    const heardAboutField =
+      form.querySelector<HTMLSelectElement>("#heardAbout");
+    const heardAboutOtherField =
+      form.querySelector<HTMLInputElement>("#heardAboutOther");
+    const heardAboutOtherWrapper = form.querySelector<HTMLElement>(
+      "[data-heard-about-other-wrapper]",
+    );
+    const heardAboutOtherError = form.querySelector<HTMLElement>(
+      '[data-error-for="heardAboutOther"]',
+    );
+
+    if (!heardAboutField || !heardAboutOtherField || !heardAboutOtherWrapper) {
+      return;
+    }
+
+    const shouldShow = heardAboutField.value === heardAboutOtherValue;
+
+    heardAboutOtherField.disabled = !shouldShow;
+    heardAboutOtherField.required = shouldShow;
+    heardAboutOtherWrapper.classList.toggle("hidden", !shouldShow);
+
+    if (!shouldShow) {
+      heardAboutOtherField.removeAttribute("aria-invalid");
+      heardAboutOtherField.value = "";
+
+      if (heardAboutOtherError) {
+        heardAboutOtherError.classList.add("hidden");
+        heardAboutOtherError.textContent = "";
+      }
+    }
+  };
+
   const initApplicationForm = () => {
     const form = document.querySelector<HTMLFormElement>(
       "[data-application-form]",
@@ -126,6 +192,17 @@ const submitUrl = import.meta.env.PUBLIC_SHIP_IT_ISLAND_SUBMIT_URL ?? "";
     if (!form) {
       return;
     }
+
+    if (form.dataset.heardAboutOtherEnhanced !== "true") {
+      form.dataset.heardAboutOtherEnhanced = "true";
+      form
+        .querySelector<HTMLSelectElement>("#heardAbout")
+        ?.addEventListener("change", () => {
+          syncHeardAboutOtherField(form);
+        });
+    }
+
+    syncHeardAboutOtherField(form);
 
     setupSubmissionForm({
       errorMessage:

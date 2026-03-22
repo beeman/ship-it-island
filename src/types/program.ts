@@ -26,14 +26,26 @@ export interface ContentItem {
   title: string;
 }
 
+export interface Callout extends ContentItem {
+  note?: string;
+}
+
 export interface FocusArea extends ContentItem {
   tag: string;
 }
 
 export interface PricingOption {
   description: string;
+  featured?: boolean;
   note?: string;
   price: string;
+  title: string;
+}
+
+export interface SprintTimeline {
+  after: ContentItem;
+  intro: string;
+  steps: ContentItem[];
   title: string;
 }
 
@@ -46,12 +58,18 @@ export interface ProgramConfig {
   applicationSections: ApplicationSection[];
   audiences: ContentItem[];
   cohort: {
+    applySummary: string;
     duration: string;
+    heroSnapshot: {
+      pricing: string;
+      timing: string;
+    };
     limitedSpots: string;
     location: string;
     summary: string;
     timeframe: string;
   };
+  cohortsCallout: Callout;
   ctas: {
     apply: {
       href: string;
@@ -66,13 +84,16 @@ export interface ProgramConfig {
   diagnosticSteps: string[];
   faqItems: ContentItem[];
   focusAreas: FocusArea[];
+  grantCallout: ContentItem;
   included: string[];
   notIncluded: string[];
   outcomes: ContentItem[];
+  pricingAddon: string;
   pricingOptions: PricingOption[];
   problemPoints: ContentItem[];
   selectionCriteria: string[];
   specialists: ContentItem[];
+  sprintTimeline: SprintTimeline;
   valuePoints: ContentItem[];
   waitlist: {
     description: string;

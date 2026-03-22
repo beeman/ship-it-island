@@ -12,6 +12,10 @@ const navLinks: NavLink[] = [
 
 export const siteConfig = {
   author: "Ship It Island",
+  contact: {
+    email: "QuanPratt.btc@gmail.com",
+    telegram: "@kellquan",
+  },
   description:
     "A 14-day execution sprint for Web3 projects ready to find the blocker, fix it, and ship a real improvement in Koh Samui.",
   lang: "en",
