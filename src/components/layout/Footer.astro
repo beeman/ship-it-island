@@ -40,6 +40,10 @@ import { programConfig } from "@/config/program";
           Small, curated cohort. Manual review and outreach follow each
           submission.
         </p>
+        <div class="mt-4 space-y-1 text-sm text-muted-foreground">
+          <p>Telegram: {siteConfig.contact.telegram}</p>
+          <p>{siteConfig.contact.email}</p>
+        </div>
         <a
           href={programConfig.ctas.apply.href}
           class="mt-4 inline-flex rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition hover:bg-foreground/90"

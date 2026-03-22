@@ -57,6 +57,7 @@ Application submissions include all application fields from `programConfig.appli
 - `email`
 - `focusArea`
 - `heardAbout`
+- `heardAboutOther`
 - `openToFeedback`
 - `primaryBlocker`
 - `projectDescription`
@@ -73,6 +74,14 @@ Application submissions include all application fields from `programConfig.appli
 - `yourRole`
 
 `projectLink` is optional and can be a public site, demo, deck, or video.
+
+`heardAboutOther` is only sent when `heardAbout` is `Other (please specify)`.
+
+`roomPreference` now uses these exact values:
+
+- `Early Bird — private room included ($2,000)`
+- `Regular — shared room ($2,400)`
+- `Regular — private room upgrade ($2,800)`
 
 The frontend sends JSON like this:
 
@@ -137,7 +146,7 @@ Create one spreadsheet with two tabs:
 Recommended `applications` header row:
 
 ```text
-submittedAt | submissionType | sourcePath | status | activeUsers | anythingElse | canCommit | caseStudyComfort | currentStage | email | focusArea | heardAbout | openToFeedback | primaryBlocker | projectDescription | projectLink | projectName | roomPreference | socialProfile | sprintGoal | supportNeeded | teamSize | teamStrength | telegramHandle | yourName | yourRole
+submittedAt | submissionType | sourcePath | status | activeUsers | anythingElse | canCommit | caseStudyComfort | currentStage | email | focusArea | heardAbout | heardAboutOther | openToFeedback | primaryBlocker | projectDescription | projectLink | projectName | roomPreference | socialProfile | sprintGoal | supportNeeded | teamSize | teamStrength | telegramHandle | yourName | yourRole
 ```
 
 Recommended `waitlist` header row:
@@ -195,6 +204,7 @@ function doPost(event) {
         "email",
         "focusArea",
         "heardAbout",
+        "heardAboutOther",
         "openToFeedback",
         "primaryBlocker",
         "projectDescription",
@@ -303,7 +313,7 @@ Constraints:
 - Application submissions must append to applications with status=waitlist_review.
 - Waitlist submissions must append to waitlist with status=waitlist_new.
 - Return JSON with ok:boolean and message, plus redirectPath=/thank-you for application submits.
-- Keep the frontend form field names unchanged.
+- Keep the frontend form field names aligned with the current site, including optional `heardAboutOther`.
 - Add or update docs with setup steps and env configuration.
 
 Deliverables:

@@ -95,11 +95,10 @@ const metadata = {
         </div>
         <div class="rounded-2xl border border-primary/20 bg-primary/10 p-5">
           <p class="text-sm font-semibold text-foreground">
-            {programConfig.cohort.limitedSpots}
+            {programConfig.cohort.heroSnapshot.pricing}
           </p>
           <p class="mt-2 text-sm text-muted-foreground">
-            Shared room $1,200 · Private room $2,000 · future cohorts designed
-            to reuse this structure.
+            {programConfig.cohort.heroSnapshot.timing}
           </p>
         </div>
       </Card>
@@ -159,6 +158,40 @@ const metadata = {
           ))
         }
       </div>
+    </div>
+  </WidgetWrapper>
+
+  <WidgetWrapper id="your-14-days">
+    <div class="space-y-10">
+      <Headline
+        classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
+        subtitle={programConfig.sprintTimeline.intro}
+        title={programConfig.sprintTimeline.title}
+      />
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
+        {
+          programConfig.sprintTimeline.steps.map((step) => (
+            <Card class="h-full">
+              <h3 class="text-xl font-semibold text-foreground">
+                {step.title}
+              </h3>
+              <p class="mt-3 text-sm text-muted-foreground">
+                {step.description}
+              </p>
+            </Card>
+          ))
+        }
+      </div>
+      <Card class="border-primary/20 bg-primary/10">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+        >
+          {programConfig.sprintTimeline.after.title}
+        </p>
+        <p class="mt-3 text-sm text-foreground">
+          {programConfig.sprintTimeline.after.description}
+        </p>
+      </Card>
     </div>
   </WidgetWrapper>
 
@@ -346,6 +379,17 @@ const metadata = {
     </div>
   </WidgetWrapper>
 
+  <WidgetWrapper containerClass="pt-0">
+    <Card class="border-primary/20 bg-primary/10">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+        {programConfig.grantCallout.title}
+      </p>
+      <p class="mt-3 text-sm text-foreground">
+        {programConfig.grantCallout.description}
+      </p>
+    </Card>
+  </WidgetWrapper>
+
   <WidgetWrapper id="pricing">
     <div class="space-y-10">
       <Headline
@@ -354,10 +398,15 @@ const metadata = {
         tagline="Pricing"
         title="Straightforward pricing for a small, curated cohort"
       />
-      <div class="grid gap-6 md:grid-cols-3">
+      <div class="grid gap-6 md:grid-cols-2">
         {
           programConfig.pricingOptions.map((option) => (
-            <Card class="h-full">
+            <Card
+              class:list={[
+                "h-full",
+                option.featured && "border-primary/30 bg-primary/10 shadow-lg",
+              ]}
+            >
               <h3 class="text-xl font-semibold text-foreground">
                 {option.title}
               </h3>
@@ -376,6 +425,24 @@ const metadata = {
           ))
         }
       </div>
+      <p class="text-sm text-muted-foreground">{programConfig.pricingAddon}</p>
+      <Card class="border-primary/20 bg-primary/10">
+        <p
+          class="text-sm font-semibold uppercase tracking-[0.2em] text-primary"
+        >
+          {programConfig.cohortsCallout.title}
+        </p>
+        <p class="mt-3 text-sm text-foreground">
+          {programConfig.cohortsCallout.description}
+        </p>
+        {
+          programConfig.cohortsCallout.note && (
+            <p class="mt-3 text-sm text-muted-foreground">
+              {programConfig.cohortsCallout.note}
+            </p>
+          )
+        }
+      </Card>
       <div class="grid gap-6 lg:grid-cols-2">
         <Card>
           <h3 class="text-xl font-semibold text-foreground">Included</h3>
