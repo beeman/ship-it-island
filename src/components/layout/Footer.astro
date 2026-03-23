@@ -41,8 +41,25 @@ import { programConfig } from "@/config/program";
           submission.
         </p>
         <div class="mt-4 space-y-1 text-sm text-muted-foreground">
-          <p>Telegram: {siteConfig.contact.telegram}</p>
-          <p>{siteConfig.contact.email}</p>
+          <p>
+            Telegram:
+            <a
+              href={`https://t.me/${siteConfig.contact.telegram.replace(/^@/, "")}`}
+              target="_blank"
+              rel="noreferrer"
+              class="transition-colors hover:text-primary"
+            >
+              {siteConfig.contact.telegram}
+            </a>
+          </p>
+          <p>
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              class="transition-colors hover:text-primary"
+            >
+              {siteConfig.contact.email}
+            </a>
+          </p>
         </div>
         <a
           href={programConfig.ctas.apply.href}

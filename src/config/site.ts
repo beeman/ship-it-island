@@ -13,7 +13,7 @@ const navLinks: NavLink[] = [
 export const siteConfig = {
   author: "Ship It Island",
   contact: {
-    email: "QuanPratt.btc@gmail.com",
+    email: "contact@ship-it-island.xyz",
     telegram: "@kellquan",
   },
   description:

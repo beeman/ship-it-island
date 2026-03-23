@@ -88,10 +88,23 @@ const metadata = {
         <div class="rounded-2xl border border-border bg-background px-4 py-3">
           <p class="text-sm font-semibold text-foreground">Direct contact</p>
           <p class="mt-2 text-sm text-muted-foreground">
-            Telegram: {siteConfig.contact.telegram}
+            Telegram:
+            <a
+              href={`https://t.me/${siteConfig.contact.telegram.replace(/^@/, "")}`}
+              target="_blank"
+              rel="noreferrer"
+              class="transition-colors hover:text-primary"
+            >
+              {siteConfig.contact.telegram}
+            </a>
           </p>
           <p class="text-sm text-muted-foreground">
-            {siteConfig.contact.email}
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              class="transition-colors hover:text-primary"
+            >
+              {siteConfig.contact.email}
+            </a>
           </p>
         </div>
       </Card>
