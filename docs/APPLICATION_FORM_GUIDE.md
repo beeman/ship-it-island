@@ -53,6 +53,7 @@ Application submissions include all application fields from `programConfig.appli
 - `anythingElse`
 - `canCommit`
 - `caseStudyComfort`
+- `cohortAvailability`
 - `currentStage`
 - `email`
 - `focusArea`
@@ -77,7 +78,14 @@ Application submissions include all application fields from `programConfig.appli
 
 `heardAboutOther` is only sent when `heardAbout` is `Other (please specify)`.
 
-`roomPreference` now uses these exact values:
+`cohortAvailability` is a required select with these exact values:
+
+- `Cohort 1 (June 2–16)`
+- `Cohort 2 (June 21–July 5)`
+- `Either cohort works`
+- `Both — I want to do the full month`
+
+`roomPreference` uses these exact values:
 
 - `Early Bird — private room included ($2,000)`
 - `Regular — shared room ($2,400)`
@@ -146,7 +154,7 @@ Create one spreadsheet with two tabs:
 Recommended `applications` header row:
 
 ```text
-submittedAt | submissionType | sourcePath | status | activeUsers | anythingElse | canCommit | caseStudyComfort | currentStage | email | focusArea | heardAbout | heardAboutOther | openToFeedback | primaryBlocker | projectDescription | projectLink | projectName | roomPreference | socialProfile | sprintGoal | supportNeeded | teamSize | teamStrength | telegramHandle | yourName | yourRole
+submittedAt | submissionType | sourcePath | status | activeUsers | anythingElse | canCommit | caseStudyComfort | cohortAvailability | currentStage | email | focusArea | heardAbout | heardAboutOther | openToFeedback | primaryBlocker | projectDescription | projectLink | projectName | roomPreference | socialProfile | sprintGoal | supportNeeded | teamSize | teamStrength | telegramHandle | yourName | yourRole
 ```
 
 Recommended `waitlist` header row:
@@ -200,6 +208,7 @@ function doPost(event) {
         "anythingElse",
         "canCommit",
         "caseStudyComfort",
+        "cohortAvailability",
         "currentStage",
         "email",
         "focusArea",

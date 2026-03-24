@@ -32,7 +32,7 @@ const metadata = {
           <p class="mx-auto max-w-2xl text-lg text-muted-foreground">
             Your application is in the review queue and your spot on the
             waitlist is confirmed. We review submissions manually and reach out
-            directly if the fit is right for this cohort.
+            directly if the fit is right for one of the upcoming cohorts.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ const metadata = {
           <div class="rounded-2xl border border-border bg-background p-4">
             <p class="text-sm font-semibold text-foreground">Cohort</p>
             <p class="mt-2 text-sm text-muted-foreground">
-              {programConfig.cohort.location} · {programConfig.cohort.timeframe}
+              {programConfig.cohort.heroSnapshot.dates}
             </p>
           </div>
         </div>

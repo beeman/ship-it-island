@@ -61,8 +61,9 @@ export interface ProgramConfig {
     applySummary: string;
     duration: string;
     heroSnapshot: {
+      dates: string;
       pricing: string;
-      timing: string;
+      timingNote: string;
     };
     limitedSpots: string;
     location: string;

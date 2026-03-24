@@ -12,7 +12,7 @@ import { siteConfig } from "@/config/site";
 const metadata = {
   title: `${siteConfig.name} | Fix the blocker and ship the improvement`,
   description:
-    "A launch-ready overview of Ship It Island: who it is for, how the sprint works, what is included, and how to apply.",
+    "Two weeks in Koh Samui to fix what's stuck, ship something real, and choose the right June or July 2026 cohort.",
   ignoreTitleTemplate: true,
 };
 ---
@@ -35,13 +35,13 @@ const metadata = {
             subtitle: "max-w-2xl text-lg md:text-xl",
             title: "text-5xl font-extrabold tracking-tight md:text-7xl",
           }}
-          subtitle="14 days to find it, fix it, and ship it, with the right people around you."
+          subtitle="Teams come in stuck. They leave with the thing shipped."
           title="What's the one thing blocking your growth?"
           titleAs="h1"
         />
         <p class="max-w-2xl text-lg text-muted-foreground">
-          {programConfig.cohort.summary} Small, curated cohorts. Manual review. No
-          retreat theater.
+          {programConfig.cohort.summary} Small cohorts. Real outcomes. No retreat
+          theater.
         </p>
         <div class="flex flex-col gap-4 sm:flex-row">
           <Button href={programConfig.ctas.apply.href} size="lg">
@@ -64,42 +64,38 @@ const metadata = {
             Cohort snapshot
           </p>
           <h2 class="text-3xl font-bold tracking-tight text-foreground">
-            Project Edition
+            June / July 2026
           </h2>
           <p class="text-muted-foreground">
-            Clear value proposition, focused execution, and a direct path into
-            the application flow.
+            Early pricing, exact dates, and the minimum needed to run.
           </p>
         </div>
-        <div class="grid gap-4 sm:grid-cols-3">
+        <div class="grid gap-4">
           <div class="rounded-2xl border border-border bg-background p-4">
             <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Duration
+              Pricing
             </p>
             <p class="mt-2 text-lg font-semibold text-foreground">
-              {programConfig.cohort.duration}
+              {programConfig.cohort.heroSnapshot.pricing}
             </p>
           </div>
           <div class="rounded-2xl border border-border bg-background p-4">
             <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Location
+              Dates
             </p>
-            <p class="mt-2 text-lg font-semibold text-foreground">Koh Samui</p>
+            <p class="mt-2 text-lg font-semibold text-foreground">
+              {programConfig.cohort.heroSnapshot.dates} ·{" "}
+              {programConfig.cohort.heroSnapshot.timingNote}
+            </p>
           </div>
           <div class="rounded-2xl border border-border bg-background p-4">
             <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Spots
+              Run threshold
             </p>
-            <p class="mt-2 text-lg font-semibold text-foreground">Limited</p>
+            <p class="mt-2 text-lg font-semibold text-foreground">
+              {programConfig.cohort.limitedSpots}
+            </p>
           </div>
-        </div>
-        <div class="rounded-2xl border border-primary/20 bg-primary/10 p-5">
-          <p class="text-sm font-semibold text-foreground">
-            {programConfig.cohort.heroSnapshot.pricing}
-          </p>
-          <p class="mt-2 text-sm text-muted-foreground">
-            {programConfig.cohort.heroSnapshot.timing}
-          </p>
         </div>
       </Card>
     </div>
@@ -109,7 +105,7 @@ const metadata = {
     <div class="space-y-10">
       <Headline
         classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
-        subtitle="Projects usually do not stall because the team is lazy. They stall because the real blocker is harder to see from the inside."
+        subtitle="You've built something real. But it's not growing, not converting, or not telling a clear story. You've been stuck for months and you know it."
         tagline="The Problem"
         title="Why projects plateau"
       />
@@ -130,8 +126,8 @@ const metadata = {
       <div
         class="rounded-3xl border border-border bg-card p-6 text-lg text-foreground shadow-sm"
       >
-        You do not need more abstract advice. You need a focused sprint with
-        structure, context, and people who can help you ship.
+        You don't need another hackathon. You need someone to sit with you and
+        fix it.
       </div>
     </div>
   </WidgetWrapper>
@@ -140,7 +136,7 @@ const metadata = {
     <div class="space-y-10">
       <Headline
         classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
-        subtitle="A lean v1 overview of how the sprint works, why it is structured this way, and what visitors should expect before applying."
+        subtitle="This is two weeks to fix what's stuck and leave with something live."
         tagline="How It Works"
         title="What actually happens"
       />
@@ -394,7 +390,7 @@ const metadata = {
     <div class="space-y-10">
       <Headline
         classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
-        subtitle="Public pricing, what's included, and what is deliberately excluded from v1 expectations."
+        subtitle="Two pricing options. Everything important is included."
         tagline="Pricing"
         title="Straightforward pricing for a small, curated cohort"
       />
@@ -482,9 +478,9 @@ const metadata = {
       <div class="space-y-10">
         <Headline
           classes={{ container: "max-w-3xl", subtitle: "text-lg" }}
-          subtitle="The site should make it easy to self-qualify before starting the application."
+          subtitle="Real examples of the kinds of projects this is built for."
           tagline="Who It's For"
-          title="Built for teams with something real to ship"
+          title="Who this is actually for"
         />
         <div class="grid gap-6 md:grid-cols-3">
           {
