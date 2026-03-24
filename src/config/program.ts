@@ -203,6 +203,30 @@ export const programConfig: ProgramConfig = {
           type: "select",
         },
         {
+          label: "Which cohort are you available for?",
+          name: "cohortAvailability",
+          options: [
+            {
+              label: "Cohort 1 (June 2–16)",
+              value: "Cohort 1 (June 2–16)",
+            },
+            {
+              label: "Cohort 2 (June 21–July 5)",
+              value: "Cohort 2 (June 21–July 5)",
+            },
+            {
+              label: "Either cohort works",
+              value: "Either cohort works",
+            },
+            {
+              label: "Both — I want to do the full month",
+              value: "Both — I want to do the full month",
+            },
+          ],
+          required: true,
+          type: "select",
+        },
+        {
           label: "Room preference",
           name: "roomPreference",
           options: [
@@ -283,7 +307,8 @@ export const programConfig: ProgramConfig = {
           type: "select",
         },
         {
-          label: "Can you commit to 14 full days in Koh Samui in June 2026?",
+          label:
+            "Can you commit to 14 full days in Koh Samui for your selected cohort?",
           name: "canCommit",
           options: [
             {
@@ -291,8 +316,8 @@ export const programConfig: ProgramConfig = {
               value: "Yes",
             },
             {
-              label: "Likely, pending final dates",
-              value: "Likely, pending final dates",
+              label: "Likely, pending travel logistics",
+              value: "Likely, pending travel logistics",
             },
             {
               label: "Not sure",
@@ -329,39 +354,40 @@ export const programConfig: ProgramConfig = {
   audiences: [
     {
       description:
-        "Web3 teams with a live product and a clear blocker. Two to three people is the sweet spot for the sprint.",
-      title: "Project teams",
+        "They have a working product but 50 daily users and no acquisition strategy. They don't need more dev time. They need someone who's built growth systems to sit with them and build one.",
+      title: "A DeFi protocol",
     },
     {
       description:
-        "Solo builders are welcome if they already have something live and know they need outside perspective plus focused execution.",
-      title: "Solo founders",
+        "They have solid tech but a confusing onboarding flow that's killing retention. They don't need advice. They need a product person to rebuild the flow with them over two weeks.",
+      title: "A wallet team",
     },
     {
       description:
-        "Potential sponsors and partners can use the application flow or manual outreach until dedicated partner pages exist.",
-      title: "Partners",
+        "They have an audience but no revenue. They don't need a course. They need to build the offer, test it, and ship it with someone who's done it.",
+      title: "A content project",
     },
   ],
   cohort: {
     applySummary:
-      "Koh Samui, Thailand · June 2026 · 4-6 projects max · Two cohorts available",
+      "Koh Samui, Thailand · Cohort 1: June 2–16 · Cohort 2: June 21–July 5 · Apply for either or both.",
     duration: "14 days",
     heroSnapshot: {
+      dates: "Cohort 1: June 2–16 · Cohort 2: June 21–July 5",
       pricing: "Early Bird $2,000 (private room included) · Regular $2,400",
-      timing: "Two cohorts, June 2026 · Timed with Island DAO",
+      timingNote: "Timed with Island DAO",
     },
-    limitedSpots: "4-6 projects max · around 10-12 people total",
+    limitedSpots: "6 participants minimum to run",
     location: "Koh Samui, Thailand",
     summary:
-      "A focused execution sprint for Web3 projects ready to ship a real improvement before they leave.",
-    timeframe: "June 2026",
+      "14 days of focused execution with senior practitioners in Koh Samui.",
+    timeframe: "June / July 2026",
   },
   cohortsCallout: {
     description:
-      "Two back-to-back 14-day cohorts from the same villa. Teams can apply for either or both.",
-    note: "Sponsored cohorts may offer discounted or free entry.",
-    title: "Two Cohorts — June 2026",
+      "Cohort 1: June 2–16 · Cohort 2: June 21–July 5. Two back-to-back 14-day sprints in Koh Samui, timed with Island DAO. Teams can apply for either or both.",
+    note: "A lot of people who went to Island DAO said they didn't get what they came for. Ship It Island is designed to fix that — focused execution with real outcomes, not just networking and vibes.",
+    title: "Two Cohorts — June / July 2026",
   },
   ctas: {
     apply: {
@@ -401,12 +427,12 @@ export const programConfig: ProgramConfig = {
   faqItems: [
     {
       description:
-        "A 14-day execution sprint for Web3 projects. You arrive with a clear blocker, work with specialists on product, growth, and narrative, and ship a real improvement before you leave.",
+        "Two weeks in Koh Samui for Web3 projects that are stuck. You come in with something real. We find the blocker, fix it with you, and ship before you leave.",
       title: "What is Ship It Island?",
     },
     {
       description:
-        "Web3 and crypto projects with something live. Ideal team size is two to three people, but solo founders are welcome too.",
+        "Web3 and crypto projects with something live. It's for teams stuck on growth, conversion, onboarding, or monetization and ready to fix that with someone hands-on.",
       title: "Who is this for?",
     },
     {
@@ -426,7 +452,7 @@ export const programConfig: ProgramConfig = {
     },
     {
       description:
-        "14 nights accommodation, 12 group meals, 10+ hours of pre-sprint diagnostic work, specialist support throughout, a $1,200 production budget per team, wellness programming, and 90-day follow-up.",
+        "14 nights accommodation, 12 group meals, 10+ hours of pre-sprint diagnostic work, all production and specialist fees, wellness programming, and 90-day follow-up.",
       title: "What's included in the price?",
     },
     {
@@ -436,7 +462,7 @@ export const programConfig: ProgramConfig = {
     },
     {
       description:
-        "Shared rooms are $1,200 per person. Private rooms are $2,000 per person. Teams of three or more can request a custom quote.",
+        "Early Bird is $2,000 per person with a private room included for the first 6 people or 3 teams in each cohort. Regular is $2,400 per person with a shared room, or $2,800 with a private room upgrade.",
       title: "How much does it cost?",
     },
     {
@@ -446,17 +472,17 @@ export const programConfig: ProgramConfig = {
     },
     {
       description:
-        "June 2026. Two 14-day sprints. Exact dates can stay centralized in config until applications close and scheduling is finalized.",
+        "Cohort 1 runs June 2–16, 2026. Cohort 2 runs June 21–July 5, 2026. You can apply for either or both.",
       title: "When is it?",
     },
     {
       description:
-        "It aligns with Island DAO activity so advisors, builders, and potential partners are already nearby.",
+        "It's timed with Island DAO, but Ship It Island is built to fix what many people felt was missing: focused execution with real outcomes, not just networking and vibes.",
       title: "Why Koh Samui in June?",
     },
     {
       description:
-        "Small and curated: four to six projects, roughly 10 to 12 people total.",
+        "Small and curated. We only need 6 participants to run a cohort, and the first 6 people or 3 teams in each cohort get Early Bird pricing.",
       title: "How many projects are in each cohort?",
     },
     {
@@ -466,7 +492,7 @@ export const programConfig: ProgramConfig = {
     },
     {
       description:
-        "A blocker addressed, a real improvement shipped, refined pitch materials, launch assets, a metrics baseline, and 90-day follow-up.",
+        "Something live: a shipped feature, a working growth system, a rebuilt onboarding flow, or a launch, plus launch assets, a metrics baseline, and 90-day follow-up.",
       title: "What will I leave with?",
     },
     {
@@ -491,7 +517,7 @@ export const programConfig: ProgramConfig = {
     },
     {
       description:
-        "Join the waitlist and future cohorts can be shared once later dates open.",
+        "Join the waitlist and we'll share future cohorts if June 2–16 or June 21–July 5 doesn't work for you.",
       title: "What if I can't make June?",
     },
   ],
@@ -517,7 +543,7 @@ export const programConfig: ProgramConfig = {
   ],
   grantCallout: {
     description:
-      "Depending on sponsors, grant rewards are available for the team(s) with the highest execution ROI — money back on registration, free spot in a future cohort, or priority placement in future runs.",
+      "Depending on sponsors, grant rewards available for the team(s) that execute the highest ROI — money back on registration, free spot in a future cohort, or priority placement.",
     title: "The Ship It Grant",
   },
   included: [
@@ -552,10 +578,11 @@ export const programConfig: ProgramConfig = {
     },
   ],
   pricingAddon:
-    "Extended specialist time available as an add-on — discussed during onboarding.",
+    "We only need 6 participants to run a cohort. If a larger protocol backs the initiative, costs come down for every team — or become free.",
   pricingOptions: [
     {
-      description: "First 6 people / 3 teams per cohort.",
+      description:
+        "For context: most people going to Koh Samui in June are already spending $700-1,200 on a room. This covers accommodation, meals, specialists, production, and 90-day follow-up.",
       featured: true,
       note: "Private room included. All-inclusive.",
       price: "$2,000 / person",
@@ -658,28 +685,28 @@ export const programConfig: ProgramConfig = {
   valuePoints: [
     {
       description:
-        "We do the homework before you arrive so the sprint starts with a diagnosis, not a long explanation.",
+        "You don't have to know what's wrong. We spend 10+ hours researching your project before you arrive — product, users, metrics, competitors. We find the blocker. Day 1 is execution, not figuring out what to work on.",
       title: "Deep diagnostic",
     },
     {
       description:
-        "You are placed in a small cohort of adjacent-stage projects with similar gaps and useful peer pressure.",
+        "You're placed with projects at a similar stage but different verticals. You learn from people solving adjacent problems without competing.",
       title: "Curated cohort",
     },
     {
       description:
-        "Specialists work alongside your team instead of acting like distant advisors.",
+        "These aren't advisors who tell you what to do and leave. They sit with your team and build alongside you for two weeks.",
       title: "Hands-on specialists",
     },
     {
       description:
-        "The sprint is designed around shipping before you leave, not collecting more ideas.",
+        "You leave with something live — a shipped feature, a working growth system, a rebuilt onboarding flow, a launch. Not a plan. The thing itself.",
       title: "Ship before you leave",
     },
   ],
   waitlist: {
     description:
-      "If you are not ready to apply yet or cannot make the June 2026 window, leave your email and future cohorts will come to you.",
+      "If you're not ready to apply yet or neither June 2–16 nor June 21–July 5 works for you, leave your email and we'll share future cohorts.",
     successMessage:
       "You are on the waitlist. We'll review and reach out with future cohort details.",
     title: "Not ready to apply yet?",

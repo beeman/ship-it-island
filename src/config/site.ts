@@ -17,7 +17,7 @@ export const siteConfig = {
     telegram: "@kellquan",
   },
   description:
-    "A 14-day execution sprint for Web3 projects ready to find the blocker, fix it, and ship a real improvement in Koh Samui.",
+    "Two weeks in Koh Samui to fix what's stuck and ship something real.",
   lang: "en",
   locale: "en_US",
   name: "Ship It Island",
